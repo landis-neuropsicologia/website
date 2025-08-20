@@ -1,0 +1,544 @@
+/* Responsive Styles */
+
+/* Mobile fix for fixed background */
+@media (max-width: 768px) {
+	.parallax-background {
+		/* On mobile, fixed backgrounds can cause performance issues */
+		background-attachment: scroll;
+		position: absolute;
+		height: 200vh; /* Extend height for scrolling */
+	}
+
+	body {
+		position: relative;
+	}
+
+	.main-title {
+		font-size: 2.5rem;
+	}
+
+	.subtitle {
+		font-size: 1.4rem;
+	}
+
+	.hero-content,
+	.content-card {
+		padding: 40px 30px;
+		margin: 15px;
+	}
+
+	.cta-buttons {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.btn {
+		width: 100%;
+		max-width: 280px;
+	}
+
+	.cookie-content {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.cookie-actions {
+		justify-content: center;
+		width: 100%;
+	}
+
+	.contact-info {
+		flex-direction: column;
+		align-items: center;
+		gap: 15px;
+	}
+
+	.specialties {
+		gap: 10px;
+	}
+
+	.specialty-tag {
+		font-size: 0.85rem;
+		padding: 6px 12px;
+	}
+
+	.whatsapp-float {
+		width: 50px;
+		height: 50px;
+		bottom: 80px;
+		right: 20px;
+	}
+
+	.whatsapp-float svg {
+		width: 20px;
+		height: 20px;
+	}
+
+	.description {
+		font-size: 1rem;
+	}
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+	.main-title {
+		font-size: 2rem;
+	}
+
+	.subtitle {
+		font-size: 1.2rem;
+	}
+
+	.hero-content,
+	.content-card {
+		padding: 30px 20px;
+		margin: 10px;
+	}
+
+	.btn {
+		padding: 12px 24px;
+		font-size: 1rem;
+		min-width: 160px;
+	}
+
+	.contact-info {
+		gap: 12px;
+	}
+
+	.contact-item {
+		font-size: 0.9rem;
+	}
+
+	.contact-icon {
+		width: 14px;
+		height: 14px;
+	}
+
+	.specialties {
+		gap: 8px;
+	}
+
+	.specialty-tag {
+		font-size: 0.8rem;
+		padding: 5px 10px;
+	}
+
+	.cookie-banner {
+		padding: 15px;
+	}
+
+	.cookie-btn {
+		padding: 8px 16px;
+		font-size: 0.85rem;
+	}
+
+	.description {
+		font-size: 0.95rem;
+		margin-bottom: 30px;
+	}
+}
+
+/* Large Desktop Styles */
+@media (min-width: 1200px) {
+	.hero-content,
+	.content-card {
+		max-width: 700px;
+		padding: 80px 60px;
+	}
+
+	.main-title {
+		font-size: 4rem;
+	}
+
+	.subtitle {
+		font-size: 2rem;
+	}
+
+	.description {
+		font-size: 1.2rem;
+	}
+
+	.contact-info {
+		gap: 40px;
+	}
+
+	.contact-item {
+		font-size: 1rem;
+	}
+
+	.specialties {
+		gap: 20px;
+	}
+
+	.specialty-tag {
+		font-size: 1rem;
+		padding: 10px 20px;
+	}
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	.parallax-background {
+		background-image: url('/assets/images/maringa.jpg');
+	}
+}
+
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+	.hero-header {
+		height: auto;
+		min-height: 100vh;
+		padding: 40px 0;
+	}
+
+	.main-title {
+		font-size: 2.2rem;
+	}
+
+	.subtitle {
+		font-size: 1.3rem;
+	}
+
+	.hero-content {
+		padding: 30px 40px;
+	}
+}
+
+/* Print Styles */
+@media print {
+	.parallax-background,
+	.overlay,
+	.particles,
+	.cookie-banner,
+	.whatsapp-float {
+		display: none !important;
+	}
+
+	body {
+		background: white !important;
+		color: black !important;
+	}
+
+	.hero-content,
+	.content-card {
+		background: white !important;
+		box-shadow: none !important;
+		border: 1px solid #ccc !important;
+	}
+
+	.main-title,
+	.subtitle,
+	.description,
+	.specialty-tag,
+	.contact-item {
+		color: black !important;
+		text-shadow: none !important;
+	}
+
+	.btn {
+		border: 1px solid #ccc !important;
+		background: white !important;
+		color: black !important;
+	}
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+	.hero-content,
+	.content-card,
+	.btn,
+	.specialty-tag,
+	.cookie-btn,
+	.whatsapp-float {
+		animation: none !important;
+		transition: none !important;
+	}
+
+	.particle {
+		animation: none !important;
+		display: none;
+	}
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+	.overlay {
+		background: rgba(0, 0, 0, 0.8);
+	}
+
+	.hero-content,
+	.content-card {
+		border: 2px solid white;
+		background: rgba(0, 0, 0, 0.8);
+	}
+
+	.btn-secondary {
+		border: 2px solid white;
+	}
+}
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+	.main-title {
+		font-size: 2.5rem;
+	}
+
+	.subtitle {
+		font-size: 1.4rem;
+	}
+
+	.hero-content,
+	.content-card {
+		padding: 40px 30px;
+		margin: 15px;
+	}
+
+	.cta-buttons {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.btn {
+		width: 100%;
+		max-width: 280px;
+	}
+
+	.cookie-content {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.cookie-actions {
+		justify-content: center;
+		width: 100%;
+	}
+
+	.contact-info {
+		flex-direction: column;
+		align-items: center;
+		gap: 15px;
+	}
+
+	.specialties {
+		gap: 10px;
+	}
+
+	.specialty-tag {
+		font-size: 0.85rem;
+		padding: 6px 12px;
+	}
+
+	.whatsapp-float {
+		width: 50px;
+		height: 50px;
+		bottom: 80px;
+		right: 20px;
+	}
+
+	.whatsapp-float svg {
+		width: 20px;
+		height: 20px;
+	}
+
+	.description {
+		font-size: 1rem;
+	}
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+	.main-title {
+		font-size: 2rem;
+	}
+
+	.subtitle {
+		font-size: 1.2rem;
+	}
+
+	.hero-content,
+	.content-card {
+		padding: 30px 20px;
+		margin: 10px;
+	}
+
+	.btn {
+		padding: 12px 24px;
+		font-size: 1rem;
+		min-width: 160px;
+	}
+
+	.contact-info {
+		gap: 12px;
+	}
+
+	.contact-item {
+		font-size: 0.9rem;
+	}
+
+	.contact-icon {
+		width: 14px;
+		height: 14px;
+	}
+
+	.specialties {
+		gap: 8px;
+	}
+
+	.specialty-tag {
+		font-size: 0.8rem;
+		padding: 5px 10px;
+	}
+
+	.cookie-banner {
+		padding: 15px;
+	}
+
+	.cookie-btn {
+		padding: 8px 16px;
+		font-size: 0.85rem;
+	}
+
+	.description {
+		font-size: 0.95rem;
+		margin-bottom: 30px;
+	}
+}
+
+/* Large Desktop Styles */
+@media (min-width: 1200px) {
+	.hero-content,
+	.content-card {
+		max-width: 700px;
+		padding: 80px 60px;
+	}
+
+	.main-title {
+		font-size: 4rem;
+	}
+
+	.subtitle {
+		font-size: 2rem;
+	}
+
+	.description {
+		font-size: 1.2rem;
+	}
+
+	.contact-info {
+		gap: 40px;
+	}
+
+	.contact-item {
+		font-size: 1rem;
+	}
+
+	.specialties {
+		gap: 20px;
+	}
+
+	.specialty-tag {
+		font-size: 1rem;
+		padding: 10px 20px;
+	}
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	.parallax-background {
+		background-image: url('/assets/images/maringa.jpg');
+	}
+}
+
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+	.hero-header {
+		height: auto;
+		min-height: 100vh;
+		padding: 40px 0;
+	}
+
+	.main-title {
+		font-size: 2.2rem;
+	}
+
+	.subtitle {
+		font-size: 1.3rem;
+	}
+
+	.hero-content {
+		padding: 30px 40px;
+	}
+}
+
+/* Print Styles */
+@media print {
+	.parallax-background,
+	.overlay,
+	.particles,
+	.cookie-banner,
+	.whatsapp-float {
+		display: none !important;
+	}
+
+	body {
+		background: white !important;
+		color: black !important;
+	}
+
+	.hero-content,
+	.content-card {
+		background: white !important;
+		box-shadow: none !important;
+		border: 1px solid #ccc !important;
+	}
+
+	.main-title,
+	.subtitle,
+	.description,
+	.specialty-tag,
+	.contact-item {
+		color: black !important;
+		text-shadow: none !important;
+	}
+
+	.btn {
+		border: 1px solid #ccc !important;
+		background: white !important;
+		color: black !important;
+	}
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+	.hero-content,
+	.content-card,
+	.btn,
+	.specialty-tag,
+	.cookie-btn,
+	.whatsapp-float {
+		animation: none !important;
+		transition: none !important;
+	}
+
+	.particle {
+		animation: none !important;
+		display: none;
+	}
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+	.overlay {
+		background: rgba(0, 0, 0, 0.8);
+	}
+
+	.hero-content,
+	.content-card {
+		border: 2px solid white;
+		background: rgba(0, 0, 0, 0.8);
+	}
+
+	.btn-secondary {
+		border: 2px solid white;
+	}
+}

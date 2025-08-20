@@ -1,0 +1,70 @@
+/* Custom Fonts */
+
+@font-face {
+	font-family: 'Matte';
+	src: url('/assets/fonts/MatteRegular.otf') format('opentype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Matte';
+	src: url('/assets/fonts/MatteVf.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* If you have other weights of Matte font, add them here */
+/*
+@font-face {
+    font-family: 'Matte';
+    src: url('/assets/fonts/Matte Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+*/
+
+/* Font Loading Optimization */
+.font-loading {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.font-loaded {
+	font-family: 'Matte', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Fallback for browsers that don't support @font-face */
+.no-fontface body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Font smoothing for better rendering */
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+/* Font size adjustments for Matte font */
+.main-title {
+	font-weight: 400; /* Use normal weight for Matte */
+	letter-spacing: -0.02em; /* Slight letter spacing adjustment */
+}
+
+.subtitle {
+	font-weight: 400;
+	letter-spacing: -0.01em;
+}
+
+.btn {
+	font-weight: 400; /* Adjust button font weight */
+	letter-spacing: 0.02em; /* Slightly spaced for better readability */
+}
+
+.specialty-tag {
+	font-weight: 400;
+	letter-spacing: 0.01em;
+}

@@ -1,0 +1,106 @@
+{
+	"name": "Viviane Balero Landis - Neuropsicologia",
+	"short_name": "VBL Neuropsicologia",
+	"description": "Especialista em avaliação neuropsicológica e reabilitação cognitiva em Maringá. Atendimento para crianças, adolescentes e adultos com TDAH, autismo, demências e lesões cerebrais.",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#ffffff",
+	"theme_color": "#504670",
+	"orientation": "portrait-primary",
+	"scope": "/",
+	"lang": "pt-BR",
+	"dir": "ltr",
+	"categories": ["medical", "health", "business"],
+	"icons": [
+		{
+			"src": "/assets/images/favicon-16x16.png",
+			"sizes": "16x16",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/assets/images/favicon-32x32.png",
+			"sizes": "32x32",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/assets/images/apple-touch-icon.png",
+			"sizes": "180x180",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/assets/images/icon-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "/assets/images/icon-256x256.png",
+			"sizes": "256x256",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/assets/images/icon-384x384.png",
+			"sizes": "384x384",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/assets/images/icon-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any maskable"
+		}
+	],
+	"shortcuts": [
+		{
+			"name": "Agendar Consulta",
+			"short_name": "Agendar",
+			"description": "Ligar para agendar uma consulta",
+			"url": "tel:+5544991761946",
+			"icons": [
+				{
+					"src": "/assets/images/shortcut-phone.png",
+					"sizes": "96x96",
+					"type": "image/png"
+				}
+			]
+		},
+		{
+			"name": "WhatsApp",
+			"short_name": "WhatsApp",
+			"description": "Conversar via WhatsApp",
+			"url": "https://wa.me/5544991761946?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20neuropsicologia.",
+			"icons": [
+				{
+					"src": "/assets/images/shortcut-whatsapp.png",
+					"sizes": "96x96",
+					"type": "image/png"
+				}
+			]
+		}
+	],
+	"screenshots": [
+		{
+			"src": "/assets/images/screenshot-mobile.png",
+			"sizes": "390x844",
+			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "Página inicial - Mobile"
+		},
+		{
+			"src": "/assets/images/screenshot-desktop.png",
+			"sizes": "1920x1080",
+			"type": "image/png",
+			"form_factor": "wide",
+			"label": "Página inicial - Desktop"
+		}
+	],
+	"prefer_related_applications": false,
+	"edge_side_panel": {
+		"preferred_width": 400
+	}
+}
