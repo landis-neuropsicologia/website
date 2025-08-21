@@ -4,7 +4,7 @@ version: '3.8'
 services:
   website:
     build: .
-    container_name: meu-site-container
+    container_name: website-container
     restart: unless-stopped
     ports:
       - "80:80"    # HTTP
@@ -17,7 +17,7 @@ services:
     labels:
       # Labels para Traefik (se usar)
       - "traefik.enable=true"
-      - "traefik.http.routers.website.rule=Host(`seu-dominio.com`)"
+      - "traefik.http.routers.website.rule=Host(`landis-neuropsicologia.com.br`)"
 
   # Exemplo de outros serviços que você pode ter
   # database:
