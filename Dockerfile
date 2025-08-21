@@ -7,10 +7,10 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Copiar package files
-COPY *.json ./
+COPY pack*.json ./
 
 # Instalar dependências
-RUN npm ci --only=development
+RUN npm ci
 
 # Copiar código fonte
 COPY . .
