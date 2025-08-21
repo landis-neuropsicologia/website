@@ -1,1 +1,40 @@
-
+{
+  "name": "landis-neuropsicologia-website",
+  "version": "1.0.0",
+  "description": "Site da Landis Neuropsicologia - HTML5 + JavaScript + SCSS",
+  "main": "index.html",
+  "scripts": {
+    "build-css": "sass scss:css --style compressed --no-source-map",
+    "watch-css": "sass --watch scss:css --style expanded",
+    "dev": "sass --watch scss:css --style expanded & live-server",
+    "build": "npm run build-css",
+    "start": "npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/landis-neuropsicologia/website.git"
+  },
+  "keywords": [
+    "neuropsicologia",
+    "html5",
+    "scss",
+    "javascript",
+    "website"
+  ],
+  "author": "Landis Neuropsicologia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/landis-neuropsicologia/website/issues"
+  },
+  "homepage": "https://github.com/landis-neuropsicologia/website#readme",
+  "devDependencies": {
+    "sass": "^1.69.0"
+  },
+  "optionalDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}
