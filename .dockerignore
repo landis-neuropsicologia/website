@@ -1,0 +1,34 @@
+# .dockerignore
+# Ignore arquivos desnecessários no build Docker
+
+node_modules
+npm-debug.log
+.git
+.gitignore
+README.md
+.env
+.nyc_output
+coverage
+.DS_Store
+.vscode
+.idea
+
+# Logs
+logs
+*.log
+
+# Arquivos temporários
+.tmp
+*.tmp
+
+# Arquivos de sistema
+Thumbs.db
+.DS_Store
+
+# GitHub Actions
+.github
+
+# Docker files
+Dockerfile
+docker-compose.yml
+.dockerignore
