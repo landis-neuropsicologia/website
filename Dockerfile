@@ -16,7 +16,7 @@ RUN npm ci
 COPY . .
 
 # Compilar SCSS para CSS
-RUN npm run build-css
+# RUN npm run build-css
 
 # ===== PRODUCTION STAGE =====
 FROM nginx:alpine
