@@ -21,7 +21,9 @@ services:
       - './letsencrypt:/letsencrypt'
 
   landing-page:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: landing-page
     container_name: website
     restart: always

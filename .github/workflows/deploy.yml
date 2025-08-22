@@ -25,6 +25,8 @@ jobs:
             cd /usr/share/nginx/html/
             git pull origin main
             docker-compose down
-            docker-compose build --no-cache
+            docker system prune -a -f
+            docker-compose build --no-cache --pull
             docker-compose up -d
-            docker system prune -f
+            docker images
+            docker ps -a
