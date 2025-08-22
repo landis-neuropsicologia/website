@@ -20,7 +20,7 @@ jobs:
         with:
           host: 185.101.104.248
           username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
+          key: ${{ secrets.DEPLOY_KEY }}
           script: |
             cd /usr/share/nginx/html/
             git pull origin main
