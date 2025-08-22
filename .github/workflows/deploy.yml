@@ -1,0 +1,30 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: ['main']
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: 185.101.104.248
+          username: ${{ root@v306895knr4i.vpsn.in }}
+          key: ${{ VQ2a9Jpu/XX39FNvAT7qymNUZ/HL5Uzp9Mkm01qaCtY }}
+          script: |
+            cd /usr/share/nginx/html/
+            git pull origin main
+            docker-compose down
+            docker-compose build --no-cache
+            docker-compose up -d
+            docker system prune -f

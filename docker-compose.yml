@@ -1,13 +1,38 @@
 version: '3.8'
-
 services:
-  website:
-    build: .
+  traefik:
+    image: traefik:v2.9
+    container_name: traefik
+    command:
+      - '--api.insecure=true'
+      - '--providers.docker=true'
+      - '--providers.docker.exposedbydefault=false'
+      - '--entrypoints.web.address=:80'
+      - '--entrypoints.websecure.address=:443'
+      - '--certificatesresolvers.myresolver.acme.tlschallenge=true'
+      - '--certificatesresolvers.myresolver.acme.email=seu-admin@landis-neuropsicologia.com.br'
+      - '--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json'
     ports:
-      - "8080:80"
-    container_name: landis-website
-    restart: unless-stopped
+      - '80:80'
+      - '443:443'
+      - '8080:8080'
     volumes:
-      # Opcional: bind mount para desenvolvimento
-      - ./css:/usr/share/nginx/html/css:ro
-      - ./assets:/usr/share/nginx/html/assets:ro
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
+      - './letsencrypt:/letsencrypt'
+
+  landing-page:
+    build: .
+    image: landing-page
+    container_name: website
+    restart: always
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.landing.rule=Host(`landis-neuropsicologia.com.br`)'
+      - 'traefik.http.routers.landing.entrypoints=websecure'
+      - 'traefik.http.routers.landing.tls.certresolver=myresolver'
+      - 'traefik.http.services.landing.loadbalancer.server.port=80'
+      # Redirect HTTP para HTTPS
+      - 'traefik.http.routers.landing-http.rule=Host(`landis-neuropsicologia.com.br`)'
+      - 'traefik.http.routers.landing-http.entrypoints=web'
+      - 'traefik.http.routers.landing-http.middlewares=redirect-to-https'
+      - 'traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https'
