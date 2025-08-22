@@ -1,41 +1,13 @@
-# docker-compose.yml
 version: '3.8'
 
 services:
   website:
     build: .
-    container_name: website-container
-    restart: unless-stopped
     ports:
-      - "80:80"    # HTTP
-      - "443:443"  # HTTPS (se configurar SSL)
+      - "8080:80"
+    container_name: landis-website
+    restart: unless-stopped
     volumes:
-      # Para logs (opcional)
-      - ./logs/nginx:/var/log/nginx
-    networks:
-      - web
-    labels:
-      # Labels para Traefik (se usar)
-      - "traefik.enable=true"
-      - "traefik.http.routers.website.rule=Host(`landis-neuropsicologia.com.br`)"
-
-  # Exemplo de outros serviços que você pode ter
-  # database:
-  #   image: postgres:15
-  #   container_name: db-container
-  #   restart: unless-stopped
-  #   environment:
-  #     POSTGRES_DB: mydb
-  #     POSTGRES_USER: user
-  #     POSTGRES_PASSWORD: password
-  #   volumes:
-  #     - postgres_data:/var/lib/postgresql/data
-  #   networks:
-  #     - web
-
-networks:
-  web:
-    external: true
-
-# volumes:
-#   postgres_data:
+      # Opcional: bind mount para desenvolvimento
+      - ./css:/usr/share/nginx/html/css:ro
+      - ./assets:/usr/share/nginx/html/assets:ro
