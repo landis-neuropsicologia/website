@@ -6,7 +6,6 @@ RUN rm -rf /usr/share/nginx/html/*
 
 # Copiar todos os arquivos do site diretamente
 COPY index.html /usr/share/nginx/html/
-COPY css/ /usr/share/nginx/html/css/
 COPY assets/ /usr/share/nginx/html/assets/
 
 # Copiar configuração do nginx
