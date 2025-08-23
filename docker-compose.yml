@@ -12,8 +12,6 @@ services:
       - '--certificatesresolvers.myresolver.acme.tlschallenge=true'
       - '--certificatesresolvers.myresolver.acme.email=seu-admin@landis-neuropsicologia.com.br'
       - '--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json'
-      # Para desenvolvimento local, desabilite o ACME
-      # - '--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory'
     ports:
       - '80:80'
       - '443:443'
@@ -32,17 +30,23 @@ services:
     labels:
       - 'traefik.enable=true'
 
-      # HTTPS Router
-      - 'traefik.http.routers.landing.rule=Host(`landis-neuropsicologia.com.br`) || Host(`localhost`)'
+      # HTTPS Router (domínio principal)
+      - 'traefik.http.routers.landing.rule=Host(`landis-neuropsicologia.com.br`)'
       - 'traefik.http.routers.landing.entrypoints=websecure'
       - 'traefik.http.routers.landing.tls.certresolver=myresolver'
       - 'traefik.http.routers.landing.service=landing'
 
-      # HTTP Router com redirecionamento
-      - 'traefik.http.routers.landing-http.rule=Host(`landis-neuropsicologia.com.br`) || Host(`localhost`)'
+      # HTTP Router para qualquer host (IP, localhost, etc.)
+      - 'traefik.http.routers.landing-http.rule=HostRegexp(`{host:.+}`)'
       - 'traefik.http.routers.landing-http.entrypoints=web'
-      - 'traefik.http.routers.landing-http.middlewares=redirect-to-https'
+      - 'traefik.http.routers.landing-http.priority=1'
       - 'traefik.http.routers.landing-http.service=landing'
+
+      # HTTP Router com redirecionamento para domínio principal
+      - 'traefik.http.routers.landing-redirect.rule=Host(`landis-neuropsicologia.com.br`)'
+      - 'traefik.http.routers.landing-redirect.entrypoints=web'
+      - 'traefik.http.routers.landing-redirect.middlewares=redirect-to-https'
+      - 'traefik.http.routers.landing-redirect.priority=2'
 
       # Middleware de redirecionamento
       - 'traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https'
