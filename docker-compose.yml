@@ -10,9 +10,9 @@ services:
       - '--entrypoints.web.address=:80'
       - '--entrypoints.websecure.address=:443'
       - '--certificatesresolvers.myresolver.acme.tlschallenge=true'
-      - '--certificatesresolvers.myresolver.acme.email=admin@landis-neuropsicologia.com.br'
+      - '--certificatesresolvers.myresolver.acme.email=seu-admin@landis-neuropsicologia.com.br'
       - '--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json'
-      - '--log.level=DEBUG'
+      - '--log.level=INFO'
     ports:
       - '80:80'
       - '443:443'
@@ -31,28 +31,23 @@ services:
     labels:
       - 'traefik.enable=true'
 
-      # HTTP - Funciona para QUALQUER host/IP
-      - 'traefik.http.routers.web.rule=HostRegexp(`{host:.+}`)'
-      - 'traefik.http.routers.web.entrypoints=web'
-      - 'traefik.http.routers.web.service=website'
+      # HTTP Router com redirecionamento (DOMÍNIO ESPECÍFICO)
+      - 'traefik.http.routers.landing-redirect.rule=Host(`landis-neuropsicologia.com.br`)'
+      - 'traefik.http.routers.landing-redirect.entrypoints=web'
+      - 'traefik.http.routers.landing-redirect.middlewares=redirect-to-https'
+      - 'traefik.http.routers.landing-redirect.priority=10'
 
-        # HTTP Router com redirecionamento para HTTPS
-      - 'traefik.http.routers.web.rule=Host(`landis-neuropsicologia.com.br`)'
-      - 'traefik.http.routers.web.entrypoints=web'
-      - 'traefik.http.routers.web.middlewares=redirect-to-https'
-      - 'traefik.http.routers.web.service=website'
+      # HTTPS Router (DOMÍNIO ESPECÍFICO)
+      - 'traefik.http.routers.landing-secure.rule=Host(`landis-neuropsicologia.com.br`)'
+      - 'traefik.http.routers.landing-secure.entrypoints=websecure'
+      - 'traefik.http.routers.landing-secure.tls.certresolver=myresolver'
+      - 'traefik.http.routers.landing-secure.service=website'
 
-      # HTTPS Router
-      - 'traefik.http.routers.websecure.rule=Host(`landis-neuropsicologia.com.br`)'
-      - 'traefik.http.routers.websecure.entrypoints=websecure'
-      - 'traefik.http.routers.websecure.tls.certresolver=myresolver'
-      - 'traefik.http.routers.websecure.service=website'
-
-      # HTTP Router para outros hosts (desenvolvimento)
-      - 'traefik.http.routers.fallback.rule=HostRegexp(`{host:.+}`)'
-      - 'traefik.http.routers.fallback.entrypoints=web'
-      - 'traefik.http.routers.fallback.priority=1'
-      - 'traefik.http.routers.fallback.service=website'
+      # HTTP Router para outros hosts (DESENVOLVIMENTO)
+      - 'traefik.http.routers.landing-dev.rule=HostRegexp(`{host:.+}`)'
+      - 'traefik.http.routers.landing-dev.entrypoints=web'
+      - 'traefik.http.routers.landing-dev.priority=1'
+      - 'traefik.http.routers.landing-dev.service=website'
 
       # Middleware de redirecionamento
       - 'traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https'
