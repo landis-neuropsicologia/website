@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches: ['main']
 
 jobs:
   deploy:
@@ -23,11 +21,11 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
-            cd /usr/share/nginx/html/
+            cd /root/website/
             git pull origin main
             docker-compose down
+            docker system prune -a -f
             docker-compose build --no-cache --pull
             docker-compose up -d
-            docker system prune -a -f
             docker images
             docker ps -a
