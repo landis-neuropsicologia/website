@@ -10,7 +10,7 @@ services:
       - '--entrypoints.web.address=:80'
       - '--entrypoints.websecure.address=:443'
       - '--certificatesresolvers.myresolver.acme.tlschallenge=true'
-      - '--certificatesresolvers.myresolver.acme.email=seu-admin@landis-neuropsicologia.com.br'
+      - '--certificatesresolvers.myresolver.acme.email=admin@landis-neuropsicologia.com.br'
       - '--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json'
       - '--log.level=DEBUG'
     ports:
@@ -36,11 +36,27 @@ services:
       - 'traefik.http.routers.web.entrypoints=web'
       - 'traefik.http.routers.web.service=website'
 
-      # HTTPS - Apenas para o domínio específico
+        # HTTP Router com redirecionamento para HTTPS
+      - 'traefik.http.routers.web.rule=Host(`landis-neuropsicologia.com.br`)'
+      - 'traefik.http.routers.web.entrypoints=web'
+      - 'traefik.http.routers.web.middlewares=redirect-to-https'
+      - 'traefik.http.routers.web.service=website'
+
+      # HTTPS Router
       - 'traefik.http.routers.websecure.rule=Host(`landis-neuropsicologia.com.br`)'
       - 'traefik.http.routers.websecure.entrypoints=websecure'
       - 'traefik.http.routers.websecure.tls.certresolver=myresolver'
       - 'traefik.http.routers.websecure.service=website'
+
+      # HTTP Router para outros hosts (desenvolvimento)
+      - 'traefik.http.routers.fallback.rule=HostRegexp(`{host:.+}`)'
+      - 'traefik.http.routers.fallback.entrypoints=web'
+      - 'traefik.http.routers.fallback.priority=1'
+      - 'traefik.http.routers.fallback.service=website'
+
+      # Middleware de redirecionamento
+      - 'traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https'
+      - 'traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true'
 
       # Configuração do serviço
       - 'traefik.http.services.website.loadbalancer.server.port=80'
