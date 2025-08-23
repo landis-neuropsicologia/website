@@ -21,7 +21,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
-            cd /root/website/
+            cd /opt/website/
             git pull origin main
             docker-compose down
             docker system prune -a -f
