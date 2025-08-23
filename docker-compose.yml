@@ -1,33 +1,33 @@
 version: '3.8'
 services:
-traefik:
-  image: traefik:v2.9
-  container_name: traefik
-  command:
-    - '--api.dashboard=true'
-    - '--providers.docker=true'
-    - '--providers.docker.exposedbydefault=false'
-    - '--entrypoints.web.address=:80'
-    - '--entrypoints.websecure.address=:443'
-    - '--certificatesresolvers.myresolver.acme.tlschallenge=true'
-    - '--certificatesresolvers.myresolver.acme.email=seu-admin@landis-neuropsicologia.com.br'
-    - '--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json'
-    - '--log.level=INFO'
-  ports:
-    - '80:80'
-    - '443:443'
-  volumes:
-    - '/var/run/docker.sock:/var/run/docker.sock:ro'
-    - './letsencrypt:/letsencrypt'
-  labels:
-    - 'traefik.enable=true'
-    # Dashboard seguro
-    - 'traefik.http.routers.dashboard.rule=Host(`traefik.landis-neuropsicologia.com.br`)'
-    - 'traefik.http.routers.dashboard.tls.certresolver=myresolver'
-    - 'traefik.http.routers.dashboard.service=api@internal'
-    # Autenticação básica
-    - 'traefik.http.routers.dashboard.middlewares=auth'
-    - 'traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$$sbZMgk9g$$zbkQuXCoy6Jq4DjEwsges0'
+  traefik:
+    image: traefik:v2.9
+    container_name: traefik
+    command:
+      - '--api.dashboard=true'
+      - '--providers.docker=true'
+      - '--providers.docker.exposedbydefault=false'
+      - '--entrypoints.web.address=:80'
+      - '--entrypoints.websecure.address=:443'
+      - '--certificatesresolvers.myresolver.acme.tlschallenge=true'
+      - '--certificatesresolvers.myresolver.acme.email=seu-admin@landis-neuropsicologia.com.br'
+      - '--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json'
+      - '--log.level=INFO'
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
+      - './letsencrypt:/letsencrypt'
+    labels:
+      - 'traefik.enable=true'
+      # Dashboard seguro
+      - 'traefik.http.routers.dashboard.rule=Host(`traefik.landis-neuropsicologia.com.br`)'
+      - 'traefik.http.routers.dashboard.tls.certresolver=myresolver'
+      - 'traefik.http.routers.dashboard.service=api@internal'
+      # Autenticação básica
+      - 'traefik.http.routers.dashboard.middlewares=auth'
+      - 'traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$$sbZMgk9g$$zbkQuXCoy6Jq4DjEwsges0'
 
   landing-page:
     build:
